@@ -23,15 +23,16 @@ for device in inventory:
             temp[x] = " "
 
         list_ports = functions.get_switch_ports(device["serial"])
-        print(list_ports)
+        #print(list_ports)
 
         for index,port in enumerate(list_ports,start=1):
             try:
                 temp[index] = port["status"]
-                ports.append(temp)
             except:
                 temp[index] = " "
                 continue
+
+        ports.append(temp)
 
 keys = ports[0].keys()
 with open('ports.csv', 'w') as output_file:
